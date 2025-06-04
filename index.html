@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kvällsappen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Välkommen till Kvällsappen</h1>
+    <p>Skapa en minnesvärd kväll – AW, fest, par eller AI-anpassad!</p>
+  </header>
+  <main>
+    <section id="game-modes">
+      <h2>Välj spelläge</h2>
+      <button onclick="selectMode('fest')">Festläge</button>
+      <button onclick="selectMode('par')">Parläge</button>
+      <button onclick="selectMode('aw')">AW-läge</button>
+      <button onclick="selectMode('sex')">Sex-läge</button>
+      <button onclick="selectMode('ai')">AI-läge</button>
+    </section>
+    <section id="output">
+      <h3>Fråga/Uppgift</h3>
+      <p id="question">Välj ett läge för att börja.</p>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
