@@ -1,13 +1,16 @@
 
 body {
-  background: linear-gradient(to right, #141e30, #243b55);
-  color: white;
   font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #232526, #414345);
+  color: white;
+  text-align: center;
   padding: 20px;
 }
-input, select, button {
-  margin: 5px;
+input, button {
+  margin: 10px;
   padding: 10px;
 }
-ul { list-style: none; padding: 0; }
-li { margin: 5px 0; }
+header {
+  border-bottom: 1px solid #555;
+  margin-bottom: 20px;
+}

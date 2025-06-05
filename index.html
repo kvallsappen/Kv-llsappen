@@ -3,42 +3,39 @@
 <html lang="sv">
 <head>
   <meta charset="UTF-8" />
-  <title>Kvällsappen V2</title>
+  <title>Kvällsappen V3</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 </head>
 <body>
   <header>
     <h1>Kvällsappen</h1>
-    <p>Nu med AI och Firebase-stöd!</p>
+    <p>AI, musik, poäng och personliga kvällar – allt i ett.</p>
+    <div id="user-info"></div>
+    <button onclick="loginWithGoogle()">Logga in med Google</button>
+    <button onclick="logout()">Logga ut</button>
   </header>
 
   <main>
     <section>
-      <input type="text" id="customQuestion" placeholder="Skriv din egen fråga" />
-      <select id="customMode">
-        <option value="fest">Fest</option>
-        <option value="par">Par</option>
-        <option value="aw">AW</option>
-        <option value="sex">Sex</option>
-      </select>
-      <select id="customLevel">
-        <option value="oskyldig">Oskyldig</option>
-        <option value="sexig">Sexig</option>
-        <option value="het">Het</option>
-        <option value="extrem">Extrem</option>
-      </select>
-      <button onclick="saveQuestion()">Lägg till fråga</button>
+      <h2>AI-läge – Beskriv din kväll</h2>
+      <input type="text" id="aiInput" placeholder="Skriv något kul du vill göra..." />
+      <button onclick="generateAIQuestion()">Skapa AI-frågor</button>
+      <ul id="aiResults"></ul>
     </section>
 
     <section>
-      <button onclick="loadQuestions()">Hämta frågor</button>
-      <ul id="questionList"></ul>
+      <h2>Sångläge (test)</h2>
+      <button onclick="startRecording()">🎤 Starta inspelning</button>
+      <button onclick="stopRecording()">⏹️ Stoppa</button>
+      <audio id="player" controls></audio>
     </section>
   </main>
 
   <script src="firebase-config.js"></script>
+  <script src="ai-config.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
