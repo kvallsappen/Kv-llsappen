@@ -1,15 +1,21 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="sv">
 <head>
-  <title>Kvällsappen</title>
+  <meta charset="UTF-8">
+  <title>Kvällsappen V8</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Välkommen till Kvällsappen V7</h1>
-  <div id="app">Appen laddas...</div>
+  <header><h1>Kvällsappen – Version 8</h1></header>
+  <nav>
+    <button onclick="chooseMode('AW')">🥂 AW-läge</button>
+    <button onclick="chooseMode('Par')">💑 Parläge</button>
+    <button onclick="chooseMode('Fest')">🎉 Festläge</button>
+    <button onclick="chooseMode('AI')">🤖 AI-läge</button>
+  </nav>
+  <section id="content">Välj ett spelläge ovan för att börja.</section>
   <script src="firebase-config.js"></script>
-  <script src="ai-config.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
