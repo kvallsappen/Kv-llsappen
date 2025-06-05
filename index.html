@@ -3,15 +3,15 @@
 <html lang="sv">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kvällsappen</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>Välkommen till Kvällsappen</h1>
-    <p>Skapa en minnesvärd kväll – AW, fest, par eller AI-anpassad!</p>
+    <h1>Kvällsappen</h1>
+    <p>Skapa en minnesvärd kväll med AI, fest, AW, par och mer</p>
   </header>
+
   <main>
     <section id="game-modes">
       <h2>Välj spelläge</h2>
@@ -19,13 +19,38 @@
       <button onclick="selectMode('par')">Parläge</button>
       <button onclick="selectMode('aw')">AW-läge</button>
       <button onclick="selectMode('sex')">Sex-läge</button>
-      <button onclick="selectMode('ai')">AI-läge</button>
+      <button onclick="selectMode('ai')">AI-läge (premium)</button>
     </section>
+
     <section id="output">
       <h3>Fråga/Uppgift</h3>
       <p id="question">Välj ett läge för att börja.</p>
+      <p id="timer"></p>
+      <p id="score">Poäng: 0</p>
+      <button onclick="addPoints(1)">+1 poäng</button>
+    </section>
+
+    <section id="custom">
+      <h3>Lägg till egen fråga</h3>
+      <form onsubmit="addCustomQuestion(event)">
+        <input type="text" id="customQuestion" placeholder="Skriv egen fråga" required />
+        <select id="customMode">
+          <option value="fest">Fest</option>
+          <option value="par">Par</option>
+          <option value="aw">AW</option>
+          <option value="sex">Sex</option>
+        </select>
+        <button type="submit">Lägg till</button>
+      </form>
+    </section>
+
+    <section id="ai-mode">
+      <h3>AI-läge (Mockup)</h3>
+      <input type="text" id="aiPrompt" placeholder="Beskriv din kväll..." />
+      <button onclick="generateAIQuestion()">Skapa AI-fråga</button>
     </section>
   </main>
+
   <script src="script.js"></script>
 </body>
 </html>
