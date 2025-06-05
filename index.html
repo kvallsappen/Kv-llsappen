@@ -1,39 +1,13 @@
 
 <!DOCTYPE html>
-<html lang="sv">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Kvällsappen V3</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+  <title>Kvällsappen</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Kvällsappen</h1>
-    <p>AI, musik, poäng och personliga kvällar – allt i ett.</p>
-    <div id="user-info"></div>
-    <button onclick="loginWithGoogle()">Logga in med Google</button>
-    <button onclick="logout()">Logga ut</button>
-  </header>
-
-  <main>
-    <section>
-      <h2>AI-läge – Beskriv din kväll</h2>
-      <input type="text" id="aiInput" placeholder="Skriv något kul du vill göra..." />
-      <button onclick="generateAIQuestion()">Skapa AI-frågor</button>
-      <ul id="aiResults"></ul>
-    </section>
-
-    <section>
-      <h2>Sångläge (test)</h2>
-      <button onclick="startRecording()">🎤 Starta inspelning</button>
-      <button onclick="stopRecording()">⏹️ Stoppa</button>
-      <audio id="player" controls></audio>
-    </section>
-  </main>
-
+  <h1>Välkommen till Kvällsappen V7</h1>
+  <div id="app">Appen laddas...</div>
   <script src="firebase-config.js"></script>
   <script src="ai-config.js"></script>
   <script src="script.js"></script>

@@ -1,0 +1,1 @@
+Kvällsappen V7 - Full kodbas för frontend inklusive AI, Firebase och design.
