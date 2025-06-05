@@ -1,54 +1,24 @@
 
-const questions = {
-  fest: ["Skåla med någon!", "Dansrutin med 2 andra!"],
-  par: ["Vad är det pinsammaste ni gjort ihop?", "Ge din partner en komplimang!"],
-  aw: ["Berätta något du aldrig sagt på jobbet.", "Imitera din chef!"],
-  sex: ["Vad var din första kyss?", "Gör en sexig blick till någon här."],
-  ai: []
-};
+const db = firebase.firestore();
 
-function selectMode(mode) {
-  const qList = questions[mode];
-  const question = qList[Math.floor(Math.random() * qList.length)];
-  document.getElementById("question").textContent = question;
-  startTimer(30);
-}
-
-let timer;
-function startTimer(seconds) {
-  clearInterval(timer);
-  let timeLeft = seconds;
-  const display = document.getElementById("timer");
-  timer = setInterval(() => {
-    if (timeLeft <= 0) {
-      clearInterval(timer);
-      display.textContent = "Tidens slut!";
-    } else {
-      display.textContent = `${timeLeft--} sekunder kvar`;
-    }
-  }, 1000);
-}
-
-let points = 0;
-function addPoints(p) {
-  points += p;
-  document.getElementById("score").textContent = `Poäng: ${points}`;
-}
-
-function addCustomQuestion(e) {
-  e.preventDefault();
-  const question = document.getElementById("customQuestion").value;
+function saveQuestion() {
+  const text = document.getElementById("customQuestion").value;
   const mode = document.getElementById("customMode").value;
-  if (!questions[mode]) questions[mode] = [];
-  questions[mode].push(question);
-  alert("Fråga tillagd!");
-  e.target.reset();
+  const level = document.getElementById("customLevel").value;
+  db.collection("questions").add({ text, mode, level })
+    .then(() => alert("Fråga sparad!"))
+    .catch(err => console.error("Fel vid sparande:", err));
 }
 
-function generateAIQuestion() {
-  const prompt = document.getElementById("aiPrompt").value;
-  if (!prompt.trim()) return alert("Skriv in din kvällsbeskrivning!");
-  const aiQuestion = "AI-genererad fråga baserat på: " + prompt;
-  questions.ai.push(aiQuestion);
-  document.getElementById("question").textContent = aiQuestion;
+function loadQuestions() {
+  const list = document.getElementById("questionList");
+  list.innerHTML = "";
+  db.collection("questions").get().then(snapshot => {
+    snapshot.forEach(doc => {
+      const data = doc.data();
+      const li = document.createElement("li");
+      li.textContent = `${data.text} [${data.mode}, ${data.level}]`;
+      list.appendChild(li);
+    });
+  });
 }

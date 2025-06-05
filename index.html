@@ -3,54 +3,42 @@
 <html lang="sv">
 <head>
   <meta charset="UTF-8" />
-  <title>Kvällsappen</title>
+  <title>Kvällsappen V2</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 </head>
 <body>
   <header>
     <h1>Kvällsappen</h1>
-    <p>Skapa en minnesvärd kväll med AI, fest, AW, par och mer</p>
+    <p>Nu med AI och Firebase-stöd!</p>
   </header>
 
   <main>
-    <section id="game-modes">
-      <h2>Välj spelläge</h2>
-      <button onclick="selectMode('fest')">Festläge</button>
-      <button onclick="selectMode('par')">Parläge</button>
-      <button onclick="selectMode('aw')">AW-läge</button>
-      <button onclick="selectMode('sex')">Sex-läge</button>
-      <button onclick="selectMode('ai')">AI-läge (premium)</button>
+    <section>
+      <input type="text" id="customQuestion" placeholder="Skriv din egen fråga" />
+      <select id="customMode">
+        <option value="fest">Fest</option>
+        <option value="par">Par</option>
+        <option value="aw">AW</option>
+        <option value="sex">Sex</option>
+      </select>
+      <select id="customLevel">
+        <option value="oskyldig">Oskyldig</option>
+        <option value="sexig">Sexig</option>
+        <option value="het">Het</option>
+        <option value="extrem">Extrem</option>
+      </select>
+      <button onclick="saveQuestion()">Lägg till fråga</button>
     </section>
 
-    <section id="output">
-      <h3>Fråga/Uppgift</h3>
-      <p id="question">Välj ett läge för att börja.</p>
-      <p id="timer"></p>
-      <p id="score">Poäng: 0</p>
-      <button onclick="addPoints(1)">+1 poäng</button>
-    </section>
-
-    <section id="custom">
-      <h3>Lägg till egen fråga</h3>
-      <form onsubmit="addCustomQuestion(event)">
-        <input type="text" id="customQuestion" placeholder="Skriv egen fråga" required />
-        <select id="customMode">
-          <option value="fest">Fest</option>
-          <option value="par">Par</option>
-          <option value="aw">AW</option>
-          <option value="sex">Sex</option>
-        </select>
-        <button type="submit">Lägg till</button>
-      </form>
-    </section>
-
-    <section id="ai-mode">
-      <h3>AI-läge (Mockup)</h3>
-      <input type="text" id="aiPrompt" placeholder="Beskriv din kväll..." />
-      <button onclick="generateAIQuestion()">Skapa AI-fråga</button>
+    <section>
+      <button onclick="loadQuestions()">Hämta frågor</button>
+      <ul id="questionList"></ul>
     </section>
   </main>
 
+  <script src="firebase-config.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
